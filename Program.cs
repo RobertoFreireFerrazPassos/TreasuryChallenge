@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using TreasuryChallenge.Model;
 using TreasuryChallenge.controller;
+using TreasuryChallenge.Common;
 
 namespace TreasuryChallenge
 {
@@ -9,11 +10,11 @@ namespace TreasuryChallenge
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Tell me the number of lines do you need and press enter.");
+            Console.WriteLine(Constants.NUMBER_OF_LINES_TO_ENTER);
             int inputValue = int.Parse(Console.ReadLine());
             var stopwatch = Stopwatch.StartNew();
 
-            TemplateFile txtFile = new TXTFile("aleatory-file", 7);
+            TemplateFile txtFile = new TXTFile(Constants.FILE_NAME, 7);
             WriteFileController write = new WriteFileController(inputValue);     
 
             write.WriteCodeInFile(txtFile);
