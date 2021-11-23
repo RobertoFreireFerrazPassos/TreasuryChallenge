@@ -1,4 +1,6 @@
+using TreasuryChallenge.Common;
 using TreasuryChallenge.Model;
+using TreasuryChallenge.Utils;
 
 namespace TreasuryChallenge.controller
 {
@@ -14,11 +16,11 @@ namespace TreasuryChallenge.controller
             try
             {
                 templateFile.WriteFile(this.InputValue);
-                System.Console.WriteLine($"A file with {this.InputValue} lines was generated.");
+                System.Console.WriteLine(string.Format(Constants.FILE_WITH_0_LINES_WAS_GENERATED, this.InputValue));
             }
             catch (System.Exception ex)
             {
-                System.Console.WriteLine($"Error to generete File: {ex.Message}");
+                System.Console.WriteLine(Constants.ERROR_TO_GENERATE_FILE + ex.Message);
             }
         }
     }

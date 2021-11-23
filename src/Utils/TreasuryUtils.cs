@@ -1,4 +1,5 @@
 using System;
+using TreasuryChallenge.Common;
 
 namespace TreasuryChallenge.utils
 {
@@ -7,7 +8,7 @@ namespace TreasuryChallenge.utils
         public static string GetChar()
         {
             Random random = new Random();
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray(0, 26);
+            var chars = Constants.LETTERS_OF_THE_ALPHABET.ToCharArray(0, 26);
 
             return chars[random.Next(25)].ToString();
         }

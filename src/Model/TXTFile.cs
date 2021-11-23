@@ -1,4 +1,5 @@
 using System.IO;
+using TreasuryChallenge.Common;
 using TreasuryChallenge.utils;
 
 namespace TreasuryChallenge.Model
@@ -14,7 +15,7 @@ namespace TreasuryChallenge.Model
         }
         public void WriteFile(int inputValue)
         {
-            string fileName = $@"{this.FileName}.txt";  
+            string fileName = this.FileName + Constants.TXT_EXTENSION;  
 
             using (StreamWriter write = new StreamWriter(fileName))
             {
@@ -24,7 +25,7 @@ namespace TreasuryChallenge.Model
                 };
             };
         }
-        public string GenerateContent(string content = "")
+        public string GenerateContent(string content = Constants.EMPTY_STRING)
         {
             if (content.Length == this.MaxLengthContent) return content;
 
