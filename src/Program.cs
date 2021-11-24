@@ -18,7 +18,8 @@ namespace TreasuryChallenge
 
             var stopwatch = Stopwatch.StartNew();
 
-            IContentService contentService = new ContentService(7, input.Value);
+            IStringBuilderService stringBuilderService = new StringBuilderService();
+            IContentService contentService = new ContentService(stringBuilderService, 7, input.Value);
             IFileService fileService = new TXTFileService();
             WriteFileController write = new WriteFileController(fileService, contentService);
 

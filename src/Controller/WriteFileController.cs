@@ -6,8 +6,8 @@ namespace TreasuryChallenge.controller
 {
     public class WriteFileController 
     {
-        public IFileService FileService { get; }
-        public IContentService ContentService { get; }
+        public IFileService FileService { get; private set; }
+        public IContentService ContentService { get; private set; }
 
         public WriteFileController(
             IFileService fileService,
