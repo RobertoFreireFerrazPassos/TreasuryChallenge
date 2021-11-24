@@ -8,7 +8,7 @@ namespace TreasuryChallenge.utils
     {
         public static String GenerateCode(int maxLengthContent)
         {
-            String response = "";
+            String response = Constants.EMPTY_STRING;
             int numberOfChars = 26;
             bool[] used = new bool[numberOfChars];
 
