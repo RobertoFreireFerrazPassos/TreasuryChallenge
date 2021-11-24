@@ -63,25 +63,9 @@ namespace TreasuryChallenge.Model
             StringBuilder stringContent = new StringBuilder();
             for (int i = 0; i < lines; i++)
             {
-                stringContent.AppendLine(GenerateCode());
+                stringContent.AppendLine(TreasuryUtils.GenerateCode());
             };
             return stringContent;
-        }        
-
-        private string GenerateCode()
-        {
-            string content = Constants.EMPTY_STRING;
-            
-            while (content.Length < MaxLengthContent)
-            {
-                string charGenerated = TreasuryUtils.GetChar();
-
-                if(!TreasuryUtils.FoundChar(content, charGenerated))
-                {
-                    content += charGenerated;
-                }
-            }
-            return content;
         }
     }
 }
