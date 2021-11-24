@@ -14,13 +14,14 @@ namespace TreasuryChallenge
             int inputValue = int.Parse(Console.ReadLine());
             var stopwatch = Stopwatch.StartNew();
 
-            TemplateFile txtFile = new TXTFile(Constants.FILE_NAME, 7);
-            WriteFileController write = new WriteFileController(inputValue);     
+            Content content = new Content(7, inputValue);
+            IFile file = new TXTFile();
+            WriteFileController write = new WriteFileController(file, content);
 
-            write.WriteCodeInFile(txtFile);
+            write.WriteCodeInFile(inputValue);
 
             stopwatch.Stop();
-            System.Console.WriteLine(stopwatch.ElapsedMilliseconds);
+            Console.WriteLine(stopwatch.ElapsedMilliseconds);
         }
     }
 }

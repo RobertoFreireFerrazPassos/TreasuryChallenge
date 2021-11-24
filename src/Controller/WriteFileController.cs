@@ -1,26 +1,31 @@
+using System;
 using TreasuryChallenge.Common;
 using TreasuryChallenge.Model;
-using TreasuryChallenge.Utils;
 
 namespace TreasuryChallenge.controller
 {
     public class WriteFileController 
     {
-        public int InputValue { get; private set; }
-        public WriteFileController(int inputValue)
+        public IFile File { get; }
+        public IContent Content { get; }
+
+        public WriteFileController(
+            IFile file,
+            IContent content)
         {
-            this.InputValue = inputValue;
+            File = file;
+            Content = content;
         }
-        public void WriteCodeInFile(TemplateFile templateFile)
+        public void WriteCodeInFile(int inputValue)
         {
             try
             {
-                templateFile.WriteFile(this.InputValue);
-                System.Console.WriteLine(string.Format(Constants.FILE_WITH_0_LINES_WAS_GENERATED, this.InputValue));
+                File.WriteFile(Constants.FILE_NAME, Content.Generate());
+                Console.WriteLine(string.Format(Constants.FILE_WITH_0_LINES_WAS_GENERATED, inputValue));
             }
             catch (System.Exception ex)
             {
-                System.Console.WriteLine(Constants.ERROR_TO_GENERATE_FILE + ex.Message);
+                Console.WriteLine(Constants.ERROR_TO_GENERATE_FILE + ex.Message);
             }
         }
     }
