@@ -23,7 +23,7 @@ namespace TreasuryChallenge.controller
                 File.WriteFile(Constants.FILE_NAME, Content.Generate());
                 Console.WriteLine(string.Format(Constants.FILE_WITH_0_LINES_WAS_GENERATED, inputValue));
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(Constants.ERROR_TO_GENERATE_FILE + ex.Message);
             }
