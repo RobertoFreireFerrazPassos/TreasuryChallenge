@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TreasuryChallenge.Common;
 using TreasuryChallenge.utils;
 
 namespace TreasuryChallenge.Model
@@ -63,7 +62,7 @@ namespace TreasuryChallenge.Model
             StringBuilder stringContent = new StringBuilder();
             for (int i = 0; i < lines; i++)
             {
-                stringContent.AppendLine(TreasuryUtils.GenerateCode());
+                stringContent.AppendLine(TreasuryUtils.GenerateCode(this.MaxLengthContent));
             };
             return stringContent;
         }

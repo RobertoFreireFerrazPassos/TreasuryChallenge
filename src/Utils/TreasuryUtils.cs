@@ -6,17 +6,18 @@ namespace TreasuryChallenge.utils
 {
     public static class TreasuryUtils
     {
-        public static String GenerateCode()
+        public static String GenerateCode(int maxLengthContent)
         {
             String response = "";
-            bool[] used = new bool[26];
+            int numberOfChars = 26;
+            bool[] used = new bool[numberOfChars];
 
-            char[] chars = Constants.LETTERS_OF_THE_ALPHABET.ToCharArray(0, 26);
+            char[] chars = Constants.LETTERS_OF_THE_ALPHABET.ToCharArray(0, numberOfChars);
             Random random = new Random();
 
-            while (response.Length < 7)
+            while (response.Length < maxLengthContent)
             {
-                int letterPosition = random.Next(25);
+                int letterPosition = random.Next(numberOfChars - 1);
                 if (!used[letterPosition])
                 {
                     used[letterPosition] = true;
