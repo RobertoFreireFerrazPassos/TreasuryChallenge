@@ -1,7 +1,6 @@
 using System;
-using System.Text;
 using TreasuryChallenge.Common;
-using TreasuryChallenge.Model;
+using TreasuryChallenge.Interface;
 
 namespace TreasuryChallenge.controller
 {

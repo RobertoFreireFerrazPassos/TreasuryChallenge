@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace TreasuryChallenge.Model
+namespace TreasuryChallenge.Interface
 {
     public interface IContentService
     {

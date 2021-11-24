@@ -3,20 +3,21 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using TreasuryChallenge.Interface;
 using TreasuryChallenge.utils;
 
-namespace TreasuryChallenge.Model
+namespace TreasuryChallenge.Services
 {
     public class ContentService : IContentService
     {
-        public int MaxLengthContent { get; private set; }
+        public int LengthContent { get; private set; }
         private int NumberOfLines;
 
         public int GetNumberOfLines() {
             return NumberOfLines;
         }
-        public ContentService(int maxLengthContent, int numberOfLines) {
-            this.MaxLengthContent = maxLengthContent;
+        public ContentService(int lengthContent, int numberOfLines) {
+            this.LengthContent = lengthContent;
             this.NumberOfLines = numberOfLines;
         }
 
@@ -66,7 +67,7 @@ namespace TreasuryChallenge.Model
             StringBuilder stringContent = new StringBuilder();
             for (int i = 0; i < lines; i++)
             {
-                stringContent.AppendLine(CodeUtils.Generate(this.MaxLengthContent));
+                stringContent.AppendLine(CodeUtils.Generate(this.LengthContent));
             };
             return stringContent;
         }

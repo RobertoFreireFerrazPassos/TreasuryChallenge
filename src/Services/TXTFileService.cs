@@ -1,8 +1,9 @@
 using System.IO;
 using System.Text;
 using TreasuryChallenge.Common;
+using TreasuryChallenge.Interface;
 
-namespace TreasuryChallenge.Model
+namespace TreasuryChallenge.Services
 {
     public class TXTFileService : IFileService
     {
