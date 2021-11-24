@@ -14,7 +14,7 @@ namespace TreasuryChallenge
             int inputValue = int.Parse(Console.ReadLine());
             var stopwatch = Stopwatch.StartNew();
 
-            Content content = new Content(7, inputValue);
+            IContent content = new Content(7, inputValue);
             IFile file = new TXTFile();
             WriteFileController write = new WriteFileController(file, content);
 

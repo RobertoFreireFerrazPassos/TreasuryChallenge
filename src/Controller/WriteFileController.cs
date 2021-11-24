@@ -20,7 +20,8 @@ namespace TreasuryChallenge.controller
         {
             try
             {
-                File.WriteFile(Constants.FILE_NAME, Content.Generate());
+                var content = Content.Generate();
+                File.WriteFile(Constants.FILE_NAME, content);
                 Console.WriteLine(string.Format(Constants.FILE_WITH_0_LINES_WAS_GENERATED, inputValue));
             }
             catch (Exception ex)
