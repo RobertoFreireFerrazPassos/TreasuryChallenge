@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using TreasuryChallenge.Common;
 using TreasuryChallenge.Model;
 
@@ -6,23 +7,23 @@ namespace TreasuryChallenge.controller
 {
     public class WriteFileController 
     {
-        public IFile File { get; }
-        public IContent Content { get; }
+        public IFileService FileService { get; }
+        public IContentService ContentService { get; }
 
         public WriteFileController(
-            IFile file,
-            IContent content)
+            IFileService fileService,
+            IContentService contentService)
         {
-            File = file;
-            Content = content;
+            FileService = fileService;
+            ContentService = contentService;
         }
-        public void WriteCodeInFile(int inputValue)
+        public void WriteCodeInFile()
         {
             try
             {
-                var content = Content.Generate();
-                File.WriteFile(Constants.FILE_NAME, content);
-                Console.WriteLine(string.Format(Constants.FILE_WITH_0_LINES_WAS_GENERATED, inputValue));
+                var content = ContentService.Generate();
+                FileService.WriteFile(Constants.FILE_NAME, content);
+                Console.WriteLine(string.Format(Constants.FILE_WITH_0_LINES_WAS_GENERATED, ContentService.GetNumberOfLines()));
             }
             catch (Exception ex)
             {

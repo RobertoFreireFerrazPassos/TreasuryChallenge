@@ -2,7 +2,7 @@ using System.Text;
 
 namespace TreasuryChallenge.Model
 {
-    public interface IFile
+    public interface IFileService
     {
         public void WriteFile(string fileName, StringBuilder stringContent);
     }

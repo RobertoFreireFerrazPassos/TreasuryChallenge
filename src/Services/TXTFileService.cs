@@ -4,7 +4,7 @@ using TreasuryChallenge.Common;
 
 namespace TreasuryChallenge.Model
 {
-    public class TXTFile : IFile
+    public class TXTFileService : IFileService
     {
         public void WriteFile(string fileName, StringBuilder stringContent)
         {

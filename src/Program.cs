@@ -12,13 +12,15 @@ namespace TreasuryChallenge
         {
             Console.WriteLine(Constants.NUMBER_OF_LINES_TO_ENTER);
             int inputValue = int.Parse(Console.ReadLine());
+            InputModel input = new InputModel(inputValue);
+
             var stopwatch = Stopwatch.StartNew();
 
-            IContent content = new Content(7, inputValue);
-            IFile file = new TXTFile();
-            WriteFileController write = new WriteFileController(file, content);
+            IContentService contentService = new ContentService(7, input.Value);
+            IFileService fileService = new TXTFileService();
+            WriteFileController write = new WriteFileController(fileService, contentService);
 
-            write.WriteCodeInFile(inputValue);
+            write.WriteCodeInFile();
 
             stopwatch.Stop();
             Console.WriteLine(stopwatch.ElapsedMilliseconds);

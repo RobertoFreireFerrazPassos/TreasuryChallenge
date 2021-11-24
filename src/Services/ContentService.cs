@@ -7,11 +7,15 @@ using TreasuryChallenge.utils;
 
 namespace TreasuryChallenge.Model
 {
-    public class Content : IContent
+    public class ContentService : IContentService
     {
         public int MaxLengthContent { get; private set; }
-        public int NumberOfLines { get; private set; }
-        public Content(int maxLengthContent, int numberOfLines) {
+        private int NumberOfLines;
+
+        public int GetNumberOfLines() {
+            return NumberOfLines;
+        }
+        public ContentService(int maxLengthContent, int numberOfLines) {
             this.MaxLengthContent = maxLengthContent;
             this.NumberOfLines = numberOfLines;
         }
@@ -58,7 +62,7 @@ namespace TreasuryChallenge.Model
             return list;
         }
 
-        public StringBuilder GenerateStringBuilder(int lines) {
+        private StringBuilder GenerateStringBuilder(int lines) {
             StringBuilder stringContent = new StringBuilder();
             for (int i = 0; i < lines; i++)
             {

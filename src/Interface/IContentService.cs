@@ -2,8 +2,9 @@
 
 namespace TreasuryChallenge.Model
 {
-    public interface IContent
+    public interface IContentService
     {
         public StringBuilder Generate();
+        public int GetNumberOfLines();
     }
 }
