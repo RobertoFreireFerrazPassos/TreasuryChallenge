@@ -1,6 +1,4 @@
 using System.Text;
-using TreasuryChallenge.controller;
-using TreasuryChallenge.Interface;
 using TreasuryChallenge.Services;
 using Xunit;
 
