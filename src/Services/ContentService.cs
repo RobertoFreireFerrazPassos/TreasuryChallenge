@@ -17,19 +17,47 @@ namespace TreasuryChallenge.Services
         public int GetNumberOfLines() {
             return NumberOfLines;
         }
-        public ContentService(IStringBuilderService stringBuilderService, int lengthContent, int numberOfLines) {
-            StringBuilderService = stringBuilderService;
+        public ContentService(int lengthContent, int numberOfLines) {
             LengthContent = lengthContent;
             NumberOfLines = numberOfLines;
         }
 
         public StringBuilder Generate() {
-            for (int i = 0; i < NumberOfLines; i++)
+            StringBuilderService = new StringBuilderService();
+
+            int numProcs = Environment.ProcessorCount;
+            int numberOfTimes = numProcs;
+            Dictionary<int, int> linesPerTasklist = getListLinesPerTask(numberOfTimes);
+
+            Parallel.For(0, numberOfTimes, i =>
             {
-                AddCodeToContent();
-            };
+                for (int y = 0; y < linesPerTasklist.GetValueOrDefault(i); y++)
+                {
+                    AddCodeToContent();
+                };
+            });
 
             return StringBuilderService.GetStringContent();
+        }
+
+        private Dictionary<int, int> getListLinesPerTask(int numberOfTimes)
+        {
+            int lines = NumberOfLines / numberOfTimes;
+            int rest = NumberOfLines % numberOfTimes;
+
+            Dictionary<int, int> list = new Dictionary<int, int>();
+
+            for (int i = 0; i < numberOfTimes; i++)
+            {
+                if (i == numberOfTimes - 1)
+                {
+                    list.Add(i, lines + rest);
+                    continue;
+                }
+                list.Add(i, lines);
+            }
+
+            return list;
         }
 
         private void AddCodeToContent()

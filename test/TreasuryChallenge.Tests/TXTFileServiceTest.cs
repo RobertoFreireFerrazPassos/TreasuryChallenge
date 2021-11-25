@@ -9,7 +9,7 @@ namespace TreasuryChallenge
     public class TXTFileServiceTest
     {
         [Fact]
-        public void Call_WriteCodeInFile_MustExecuteSuccessfully()
+        public void MustWriteCodeInFileSuccessfully()
         {
             try
             {

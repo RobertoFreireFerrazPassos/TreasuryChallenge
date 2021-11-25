@@ -9,7 +9,7 @@ namespace TreasuryChallenge
         [Theory]
         [InlineData(1)]
         [InlineData(7)]
-        public void mustReturnCodeWithSameLengthAsInputed(int lengthContent)
+        public void MustReturnCodeWithSameLengthAsInputed(int lengthContent)
         {
             string result = CodeUtils.Generate(lengthContent);
 
@@ -17,7 +17,7 @@ namespace TreasuryChallenge
         }
 
         [Fact]
-        public void mustResultBeOnlyCharacters()
+        public void MustResultBeOnlyCharacters()
         {
             int lengthContent = 10;
             string LETTERS_OF_THE_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -31,7 +31,7 @@ namespace TreasuryChallenge
         }
 
         [Fact]
-        public void mustNotHaveDuplicatedCharacters()
+        public void MustNotHaveDuplicatedCharacters()
         {
             int lengthContent = 10;
 

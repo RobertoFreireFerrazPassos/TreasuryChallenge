@@ -8,13 +8,15 @@ namespace TreasuryChallenge.Services
     {
         private StringBuilder stringContent = new StringBuilder();
         private HashSet<string> stringContentList = new HashSet<string>();
+        private readonly object balanceLock = new object();
 
         public bool Append(string value) {
-            bool added = stringContentList.Add(value);
-
-            if (added) stringContent.AppendLine(value);
-
-            return added;
+            lock (balanceLock)
+            {
+                bool added = stringContentList.Add(value);
+                if (added) stringContent.AppendLine(value);
+                return added;
+            }            
         }
 
         public StringBuilder GetStringContent() {

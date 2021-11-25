@@ -1,3 +1,6 @@
+using System.Text;
+using TreasuryChallenge.Interface;
+using TreasuryChallenge.Services;
 using Xunit;
 
 namespace TreasuryChallenge
@@ -5,11 +8,15 @@ namespace TreasuryChallenge
     public class ContentServiceTest
     {
         [Fact]
-        public void ToDo()
+        public void MustGenerateStringBuilderWithCorrectLength()
         {
-            // Pending test
+            int length = 10;
+            int lengthCode = 7;
+            IContentService contentService = new ContentService(lengthCode, length);
 
-            Assert.True(false);
+            string[] result = contentService.Generate().ToString().Trim().Split("\r\n");
+
+            Assert.Equal(length, result.Length);
         } 
     }
 }
